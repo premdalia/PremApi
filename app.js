@@ -372,7 +372,7 @@ const data = [
 ];
 
 // Endpoint to get data based on the 's' and 'id' query parameters
-app.get("/api/data", (req, res) => {
+app.get("/", (req, res) => {
   const category = req.query.s; // Get the value of 's' query parameter
   const productId = req.query.id; // Get the value of 'id' query parameter
 
