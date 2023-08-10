@@ -1056,7 +1056,7 @@ const data = [
 ];
 
 // Endpoint to get data based on the 's' and 'id' query parameters
-app.get('/api/data', (req, res) => {
+app.get('', (req, res) => {
   const category = req.query.s;
   const productId = req.query.id;
   const subcategory = req.query.sub;
