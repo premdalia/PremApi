@@ -785,7 +785,7 @@ const data = [
         "price": 40,
         "stock": 55,
         "company_name": "ActiveLife",
-        "product_images": "https://rukminim2.flixcart.com/image/612/612/xif0q/short/g/b/u/34-34-rishikansh-original-imagjybyxrga4pdj.jpeg?q=70",
+        "product_images": "https://rukminim2.flixcart.com/image/612/612/xif0q/short/l/x/q/m-st-101-ss-02-pack-of-2-solid-men-gym-and-sport-short-and-track-original-imagq65xhv2hzksn.jpeg?q=70",
         "reviews": [
           {
             "author": "Alex Turner",
@@ -800,9 +800,256 @@ const data = [
     
       
         ]
+         },
+
+
+          {
+        "product_id": 5011,
+        "product_name": "Ethnic set of Dress",
+        "category": "traditional",
+        "subcategory": "clothes",
+
+        "target_gender": "woman",
+        "description": "High-performance active shorts suitable for various sports and workouts. The shorts are made of moisture-wicking fabric and have a stretchy waistband.",
+        "price": 40,
+        "stock": 55,
+        "company_name": "ActiveLife",
+        "product_images": "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/o/n/y/l-pant-set-maroon-pahraava-original-imagru9fubmhtfmg.jpeg?q=70",
+        "reviews": [
+          {
+            "author": "Alex Turner",
+            "rating": 5,
+            "review": "These shorts are perfect for my workouts. They're comfortable and stay in place."
+          },
+          {
+            "author": "Emily White",
+            "rating": 4,
+            "review": "The shorts are great, but the sizing is a bit off. Still, they're good."
+          }
+    
       
-      
+        ]
+        },
+        {
+          "product_id": 5012,
+          "product_name": "Classic Shirt",
+          "category": "shirts",
+          "subcategory": "clothes",
+          "target_gender": "unisex",
+          "description": "A timeless classic white shirt that complements any outfit. Made from high-quality cotton with a tailored fit for both men and women.",
+          "price": 39.99,
+          "stock": 50,
+          "company_name": "FashionUnite",
+          "product_images": "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/t/i/w/l-msshrt20157-mascln-sassafras-original-imagpwb2wufkhfhf.jpeg?q=70",
+          "reviews": [
+            {
+              "author": "Alex Johnson",
+              "rating": 5,
+              "review": "This shirt is perfect! I love the fit and feel."
+            },
+            {
+              "author": "Taylor Lee",
+              "rating": 4,
+              "review": "Great quality shirt, but I wish it came in more colors."
+            }
+          ]
+        },
+
+        {
+          "product_id": 5013,
+          "product_name": "Denim Jacket",
+          "category": "jackets",
+          "subcategory": "clothes",
+          "target_gender": "unisex",
+          "description": "A versatile denim jacket that never goes out of style. It's perfect for layering and adds a touch of casual cool to any outfit.",
+          "price": 69.99,
+          "stock": 35,
+          "company_name": "UrbanTrends",
+          "product_images": "https://rukminim2.flixcart.com/image/612/612/km2clu80/jacket/1/c/l/s-mnt-7003-montrez-original-imagffv4shrzd63z.jpeg?q=70",
+          "reviews": [
+            {
+              "author": "Chris Smith",
+              "rating": 4,
+              "review": "Great jacket, but I wish it had more pockets."
+            },
+            {
+              "author": "Emma Davis",
+              "rating": 5,
+              "review": "Love this jacket! It's my go-to piece for any casual occasion."
+            }
+          ]
+        },
+        {
+          "product_id": 5014,
+          "product_name": "Basic Black Trousers",
+          "category": "trousers",
+          "subcategory": "clothes",
+          "target_gender": "unisex",
+          "description": "A staple in any wardrobe, these basic black trousers offer comfort and style for both men and women. Perfect for office and everyday wear.",
+          "price": 49.99,
+          "stock": 60,
+          "company_name": "StyleHub",
+          "product_images": "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/c/4/l/34-trouderam-helken-original-imagz3mhhzpg7fnx.jpeg?q=70",
+          "reviews": [
+            {
+              "author": "Jennifer White",
+              "rating": 5,
+              "review": "These trousers fit perfectly and are so comfortable to wear."
+            },
+            {
+              "author": "Michael Johnson",
+              "rating": 4,
+              "review": "Nice quality trousers, but they run a bit long for my taste."
+            }
+          ]
+        },
+        {
+          "product_id": 5015,
+          "product_name": "Cotton Hoodie",
+          "category": "hoodies",
+          "subcategory": "clothes",
+          "target_gender": "unisex",
+          "description": "A cozy cotton hoodie that's perfect for chilly days. Features a front kangaroo pocket and a drawstring hood.",
+          "price": 45.99,
+          "stock": 25,
+          "company_name": "CozyWear",
+          "product_images": "https://rukminim2.flixcart.com/image/612/612/xif0q/sweatshirt/z/n/e/9-10-years-gl22-sw102-pr-alan-jones-original-imagrzxdtz5vs57p.jpeg?q=70",
+          "reviews": [
+            {
+              "author": "David Wilson",
+              "rating": 5,
+              "review": "This hoodie is so comfortable! I wear it all the time."
+            },
+            {
+              "author": "Sophia Adams",
+              "rating": 4,
+              "review": "Great hoodie, but I wish it had a bit more room in the sleeves."
+            }
+          ]
         }
+        
+        
+        
+
+
+
+        
+
+
+      //   {
+      //     "product_id": 5012,
+      //     "product_name": "AllWeather Sports Watch",
+      //     "category": "Watches",
+      //     "subcategory": "Accessories",
+      //     "target_gender": "Unisex",
+      //     "description": "Versatile sports watch with various functions for running, swimming, and tracking fitness activities. Waterproof and durable.",
+      //     "price": 95,
+      //     "stock": 25,
+      //     "company_name": "TimeMaster",
+      //     "product_images": "",
+      //     "reviews": [
+      //         {"author": "Daniel Anderson", "rating": 5, "review": "This watch is incredible! It tracks everything, and I love the sleek design."},
+      //         {"author": "Jessica Evans", "rating": 4, "review": "Great sports watch, but the user interface could be more intuitive."}
+      //     ]
+      // },
+      // {
+      //     "product_id": 5013,
+      //     "product_name": "Premium Yoga Mat",
+      //     "category": "Yoga Gear",
+      //     "subcategory": "Sports",
+      //     "target_gender": "Unisex",
+      //     "description": "High-density yoga mat with excellent grip and cushioning. Ideal for yoga, pilates, and floor exercises.",
+      //     "price": 50,
+      //     "stock": 50,
+      //     "company_name": "YogaZen",
+      //     "product_images": "https://example.com/images/yogazen-mat.jpg",
+      //     "reviews": [
+      //         {"author": "Sophie Adams", "rating": 5, "review": "This yoga mat is perfect! I feel so stable and supported during my practice."},
+      //         {"author": "Ryan Mitchell", "rating": 4, "review": "Great quality mat, but I wish it was a bit thicker for more cushioning."}
+      //     ]
+      // },
+      // {
+      //     "product_id": 5014,
+      //     "product_name": "AdventureTrail Running Shoes",
+      //     "category": "Shoes",
+      //     "subcategory": "Sports",
+      //     "target_gender": "Unisex",
+      //     "description": "Trail running shoes with rugged soles for excellent traction on uneven terrain. Lightweight and breathable for long runs.",
+      //     "price": 80,
+      //     "stock": 35,
+      //     "company_name": "TrekRunner",
+      //     "product_images": "https://example.com/images/trekrunner-shoes.jpg",
+      //     "reviews": [
+      //         {"author": "Gregory Turner", "rating": 5, "review": "These trail shoes are fantastic! My feet feel secure on rocky paths."},
+      //         {"author": "Emily Wilson", "rating": 4, "review": "The shoes are comfortable, but they could have more color options."}
+      //     ]
+      // },
+      // {
+      //     "product_id": 5015,
+      //     "product_name": "CoreFlex Resistance Bands",
+      //     "category": "Fitness Equipment",
+      //     "subcategory": "Accessories",
+      //     "target_gender": "Unisex",
+      //     "description": "Set of resistance bands with varying levels of tension for strength training and stretching exercises.",
+      //     "price": 30,
+      //     "stock": 60,
+      //     "company_name": "FlexPower",
+      //     "product_images": "https://example.com/images/flexpower-bands.jpg",
+      //     "reviews": [
+      //         {"author": "Michaela Turner", "rating": 5, "review": "These resistance bands are fantastic! They're versatile and high-quality."},
+      //         {"author": "Robert Carter", "rating": 3, "review": "The bands are good, but the highest tension could be more challenging."}
+      //     ]
+      // },
+      // {
+      //     "product_id": 5016,
+      //     "product_name": "QuickDry Beach Towel",
+      //     "category": "Towels",
+      //     "subcategory": "Accessories",
+      //     "target_gender": "Unisex",
+      //     "description": "Absorbent and quick-drying beach towel made from microfiber material. Lightweight and compact for easy carrying.",
+      //     "price": 20,
+      //     "stock": 70,
+      //     "company_name": "BeachLife",
+      //     "product_images": "https://example.com/images/beachlife-towel.jpg",
+      //     "reviews": [
+      //         {"author": "Jennifer Reed", "rating": 4, "review": "This beach towel is perfect for vacations! It dries quickly and takes up little space in my bag."},
+      //         {"author": "Alex Green", "rating": 5, "review": "Love the quality and texture of this towel. Great for beach trips!"}
+      //     ]
+      // },
+      // {
+      //     "product_id": 5017,
+      //     "product_name": "HydroCharge Water Bottle",
+      //     "category": "Water Bottles",
+      //     "subcategory": "Accessories",
+      //     "target_gender": "Unisex",
+      //     "description": "Insulated water bottle that keeps beverages cold for hours. Perfect for outdoor activities and workouts.",
+      //     "price": 25,
+      //     "stock": 40,
+      //     "company_name": "HydraTech",
+      //     "product_images": "https://example.com/images/hydratech-bottle.jpg",
+      //     "reviews": [
+      //         {"author": "Mark Johnson", "rating": 5, "review": "This water bottle is amazing! It keeps my drink cold even during long hikes."},
+      //         {"author": "Rachel Adams", "rating": 4, "review": "Great bottle, but the lid could be easier to clean."}
+      //     ]
+      // },
+      // {
+      //     "product_id": 5018,
+      //     "product_name": "ProZone Basketball",
+      //     "category": "Basketballs",
+      //     "subcategory": "Sports",
+      //     "target_gender": "Unisex",
+      //     "description": "Premium indoor/outdoor basketball with excellent grip and durability. Ideal for basketball enthusiasts and training sessions.",
+      //     "price": 35,
+      //     "stock": 20,
+      //     "company_name": "PlayMaster",
+      //     "product_images": "https://example.com/images/playmaster-basketball.jpg",
+      //     "reviews": [
+      //         {"author": "Jason Davis", "rating": 5, "review": "This basketball is top-notch! Perfect for street games and indoor courts."},
+      //         {"author": "Michelle Wilson", "rating": 4, "review": "Great basketball, but the grip could be a bit tackier."}
+      //     ]
+      // },
+      
+    
     
       
       
@@ -814,6 +1061,8 @@ app.get('/api/data', (req, res) => {
   const productId = req.query.id;
   const subcategory = req.query.sub;
   const target_gender = req.query.g;
+  const company_name = req.query.cn;
+
 
   if (category && productId && subcategory && target_gender) {
     // If all parameters are provided, return the matching item
@@ -896,6 +1145,14 @@ app.get('/api/data', (req, res) => {
         item.subcategory === subcategory
     );
     res.json(filteredData);
+  } else if (company_name && subcategory) {
+    // If 's' and 'sub' parameters are provided, filter the data based on both
+    const filteredData = data.filter(
+      (item) =>
+        item.company_name === company_name &&
+        item.subcategory === subcategory
+    );
+    res.json(filteredData);
   } else if (category && target_gender) {
     // If 's' and 'g' parameters are provided, filter the data based on both
     const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
@@ -930,6 +1187,11 @@ app.get('/api/data', (req, res) => {
     // If only 'sub' parameter is provided, filter the data based on the 's' query parameter
     const filteredData = data.filter((item) => item.target_gender === target_gender);
     res.json(filteredData);
+    
+    }else if (company_name) {
+      // If only 'sub' parameter is provided, filter the data based on the 's' query parameter
+      const filteredData = data.filter((item) => item.company_name === company_name);
+      res.json(filteredData);
   } else if (category) {
     // If only 's' parameter is provided, filter the data based on the 's' query parameter
     const filteredData = data.filter((item) => item.category === category);
@@ -950,5 +1212,5 @@ app.get('/api/data', (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${3000}`);
+  console.log(`Server is running on http://localhost:${3001}`);
 });
