@@ -1056,7 +1056,7 @@ const data = [
 ];
 
 // Endpoint to get data based on the 's' and 'id' query parameters
-app.get('', (req, res) => {
+app.get('/api/data', (req, res) => {
   const category = req.query.s;
   const productId = req.query.id;
   const subcategory = req.query.sub;
@@ -1212,5 +1212,5 @@ app.get('', (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${3001}`);
+  console.log(`Server is running on http://localhost:${3000}`);
 });

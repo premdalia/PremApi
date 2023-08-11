@@ -6,8 +6,9 @@
     "mongoose": "^7.4.2"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js && node mongo.js"
   },
+  
   "env": {
     "MONGODB_URI": "mongodb+srv://dranzerop07:Dranzerop07@cluster0.ho114lo.mongodb.net/"
   }

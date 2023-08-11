@@ -74,25 +74,25 @@
       return res.status(500).json({ msg: 'Internal server error' });
     }
   });
-  app.post('/add-visited', async (req, res) => {
-    const { username, visitedItem } = req.body;
+  // app.post('/add-visited', async (req, res) => {
+  //   const { username, visitedItem } = req.body;
   
-    try {
-      const userObj = await user.findOne({ username });
+  //   try {
+  //     const userObj = await user.findOne({ username });
   
-      if (!userObj) {
-        return res.status(404).json({ msg: 'User not found' });
-      }
+  //     if (!userObj) {
+  //       return res.status(404).json({ msg: 'User not found' });
+  //     }
   
-      userObj.recentlyVisited.push(visitedItem);
-      await userObj.save();
+  //     userObj.recentlyVisited.push(visitedItem);
+  //     await userObj.save();
   
-      res.json({ msg: 'Visited item added successfully' });
-    } catch (error) {
-      console.error('Error adding visited item:', error);
-      res.status(500).json({ msg: 'Internal server error' });
-    }
-  });
+  //     res.json({ msg: 'Visited item added successfully' });
+  //   } catch (error) {
+  //     console.error('Error adding visited item:', error);
+  //     res.status(500).json({ msg: 'Internal server error' });
+  //   }
+  // });
   
 
   // ... (Start the server and other necessary code)
