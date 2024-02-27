@@ -1478,41 +1478,139 @@
 
   
 
-  app.get('/', (req, res) => {
-    const { s: category, id: productId, sub: subcategory, g: target_gender, cn: company_name, min: minPrice, max: maxPrice } = req.query;
+//   app.get('/', (req, res) => {
+//     const { s: category, id: productId, sub: subcategory, g: target_gender, cn: company_name, min: minPrice, max: maxPrice } = req.query;
 
-    const filterParams = {
-        category,
-        productId,
-        subcategory,
-        target_gender,
-        company_name,
-        minPrice: minPrice ? parseFloat(minPrice) : 0,
-        maxPrice: maxPrice ? parseFloat(maxPrice) : Number.MAX_VALUE
-    };
+//     const filterParams = {
+//         category,
+//         productId,
+//         subcategory,
+//         target_gender,
+//         company_name,
+//         minPrice: minPrice ? parseFloat(minPrice) : 0,
+//         maxPrice: maxPrice ? parseFloat(maxPrice) : Number.MAX_VALUE
+//     };
 
-    const filteredData = data.filter(item => meetsFilterCriteria(item, filterParams));
-    // console.log("Target Gender:", item.target_gender)
+//     const filteredData = data.filter(item => meetsFilterCriteria(item, filterParams));
+//     // console.log("Target Gender:", item.target_gender)
 
-    if (filteredData.length > 0) {
-        res.json(filteredData); // Return all matching items
-    } else {
-        res.status(404).json({ error: "Items not found" });
-    }
+//     if (filteredData.length > 0) {
+//         res.json(filteredData); // Return all matching items
+//     } else {
+//         res.status(404).json({ error: "Items not found" });
+//     }
+// });
+
+// function meetsFilterCriteria(item, { category, productId, subcategory, target_gender, company_name, minPrice, maxPrice }) {
+  
+//   return (
+//         (!category || item.category === category) &&
+//         (!productId || item.product_id.toString() === productId) &&
+//         (!subcategory || item.subcategory === subcategory) &&
+//         (!target_gender || (Array.isArray(target_gender) ? target_gender.includes(item.target_gender) : item.target_gender === target_gender)) &&
+//         (!company_name || item.company_name === company_name) &&
+//         (item.price >= minPrice && item.price <= maxPrice)
+//     );
+// }
+
+// app.listen(5000, () => {
+//     console.log('Server started on http://localhost:5000');
+// });
+
+
+
+
+
+
+
+
+// app.get('/', (req, res) => {
+//     const { s: category, id: productId, sub: subcategory, g: target_gender, cn: company_name, min: minPrice, max: maxPrice } = req.query;
+
+//     const filterParams = {
+//         category,
+//         productId,
+//         subcategory,
+//         target_gender,
+//         company_name,
+//         minPrice: minPrice ? parseFloat(minPrice) : 0,
+//         maxPrice: maxPrice ? parseFloat(maxPrice) : Number.MAX_VALUE
+//     };
+
+//     const filteredData = data.find(item => meetsFilterCriteria(item, filterParams));
+
+//     if (filteredData) {
+//         res.json(filteredData); // Return the matching item
+//     } else {
+//         res.status(404).json({ error: "Item not found" });
+//     }
+// });
+
+// function meetsFilterCriteria(item, { category, productId, subcategory, target_gender, company_name, minPrice, maxPrice }) {
+//     return (
+//         (!category || item.category === category) &&
+//         (!productId || item.product_id.toString() === productId) &&
+//         (!subcategory || item.subcategory === subcategory) &&
+//         (!target_gender || (Array.isArray(target_gender) ? target_gender.includes(item.target_gender) : item.target_gender === target_gender)) &&
+//         (!company_name || item.company_name === company_name) &&
+//         (item.price >= minPrice && item.price <= maxPrice)
+//     );
+// }
+
+// const PORT = 5000;
+// app.listen(PORT, () => {
+//     console.log(`Server started on http://localhost:${PORT}`);
+// });
+
+
+
+app.get('/', (req, res) => {
+  const { s: category, id: productId, sub: subcategory, g: target_gender, cn: company_name, min: minPrice, max: maxPrice } = req.query;
+
+  const filterParams = {
+      category,
+      productId,
+      subcategory,
+      target_gender,
+      company_name,
+      minPrice: minPrice ? parseFloat(minPrice) : 0,
+      maxPrice: maxPrice ? parseFloat(maxPrice) : Number.MAX_VALUE
+  };
+
+  const filteredData = data.filter(item => meetsFilterCriteria(item, filterParams));
+
+  if (filteredData.length > 0) {
+      // Return an array of objects containing product details including the product name
+      const products = filteredData.map(item => ({
+          product_id: item.product_id,
+          product_name: item.product_name,
+          category: item.category,
+          subcategory: item.subcategory,
+          target_gender: item.target_gender,
+          description: item.description,
+          price: item.price,
+          stock: item.stock,
+          company_name: item.company_name,
+          product_images: item.product_images,
+          reviews: item.reviews
+      }));
+      res.json(products); // Return all matching products
+  } else {
+      res.status(404).json({ error: "Items not found" });
+  }
 });
 
 function meetsFilterCriteria(item, { category, productId, subcategory, target_gender, company_name, minPrice, maxPrice }) {
-  
   return (
-        (!category || item.category === category) &&
-        (!productId || item.product_id.toString() === productId) &&
-        (!subcategory || item.subcategory === subcategory) &&
-        (!target_gender || (Array.isArray(target_gender) ? target_gender.includes(item.target_gender) : item.target_gender === target_gender)) &&
-        (!company_name || item.company_name === company_name) &&
-        (item.price >= minPrice && item.price <= maxPrice)
-    );
+      (!category || item.category === category) &&
+      (!productId || item.product_id.toString() === productId) &&
+      (!subcategory || item.subcategory === subcategory) &&
+      (!target_gender || (Array.isArray(target_gender) ? target_gender.includes(item.target_gender) : item.target_gender === target_gender)) &&
+      (!company_name || item.company_name === company_name) &&
+      (item.price >= minPrice && item.price <= maxPrice)
+  );
 }
 
 app.listen(5000, () => {
-    console.log('Server started on http://localhost:5000');
+  console.log('Server started on http://localhost:5000');
 });
