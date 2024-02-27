@@ -6,7 +6,8 @@
     "mongoose": "^7.4.2"
   },
   "scripts": {
-    "start": "node mongo.js"
+    "start": "node mongo.js",
+    "dev":"nodemon mongo.js"
   },
   
   "env": {

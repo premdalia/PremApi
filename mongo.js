@@ -10,7 +10,8 @@
   app.use(cors());
 
   const mongourl =
-    'mongodb+srv://dranzerop07:Dranzerop07@cluster0.ho114lo.mongodb.net/';
+    // 'mongodb+srv://dranzerop07:Dranzerop07@cluster0.ho114lo.mongodb.net/';
+    "mongodb+srv://dranzerop07:Dranzerop07@cluster0.ho114lo.mongodb.net/test?retryWrites=true&w=majority";
   mongoose
     .connect(mongourl, {
       useNewUrlParser: true,
@@ -1143,161 +1144,375 @@
         
         
   ];
+
+
+
+
+
+
+
+
+
+
+
+
   
   // Endpoint to get data based on the 's' and 'id' query parameters
-  app.get('/', (req, res) => {
-    const category = req.query.s;
-    const productId = req.query.id;
-    const subcategory = req.query.sub;
-    const target_gender = req.query.g;
-    const company_name = req.query.cn;
+  // app.get('/', (req, res) => {
+  //   const category = req.query.s;
+  //   const productId = req.query.id;
+  //   const subcategory = req.query.sub;
+  //   const target_gender = req.query.g;
+  //   const company_name = req.query.cn;
+  //   const minPrice = req.query.min ? parseFloat(req.query.min) : 0; // Retrieve minimum price query parameter
+  //   const maxPrice = req.query.max ? parseFloat(req.query.max) : Number.MAX_VALUE;
+
+  //   // const minPrice = req.query.min; // Retrieve minimum price query parameter
+  //   // const maxPrice = req.query.max;
   
-  
-    if (category && productId && subcategory && target_gender) {
-      // If all parameters are provided, return the matching item
-      const filteredData = data.filter(
-        (item) =>
-          item.category === category &&
-          item.product_id.toString() === productId &&
-          item.subcategory === subcategory &&
-          item.target_gender === target_gender
-      );
-      if (filteredData.length > 0) {
-        res.json(filteredData[0]); // Return the first matching item
-      } else {
-        res.status(404).json({ error: "Item not found" });
-      }
-    } else if (category && productId && subcategory) {
-      // If 's', 'id', and 'sub' parameters are provided, return matching item
-      const filteredData = data.filter(
-        (item) =>
-          item.category === category &&
-          item.product_id.toString() === productId &&
-          item.subcategory === subcategory
-      );
-      if (filteredData.length > 0) {
-        res.json(filteredData[0]); // Return the first matching item
-      } else {
-        res.status(404).json({ error: "Item not found" });
-      }
-    } else if (category && productId && target_gender) {
-      // If 's', 'id', and 'g' parameters are provided, return matching item
-      const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
-      const filteredData = data.filter(
-        (item) =>
-          item.category === category &&
-          item.product_id.toString() === productId &&
-          target_genders.includes(item.target_gender)
-      );
-      if (filteredData.length > 0) {
-        res.json(filteredData[0]); // Return the first matching item
-      } else {
-        res.status(404).json({ error: "Item not found" });
-      }
-    } else if (category && subcategory && target_gender) {
-      // If 's', 'sub', and 'g' parameters are provided, filter the data based on all three
-      const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
-      const filteredData = data.filter(
-        (item) =>
-          item.category === category &&
-          item.subcategory === subcategory &&
-          target_genders.includes(item.target_gender)
-      );
-      res.json(filteredData);
-    } else if (productId && subcategory && target_gender) {
-      // If 'id', 'sub', and 'g' parameters are provided, filter the data based on all three
-      const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
-      const filteredData = data.filter(
-        (item) =>
-          item.product_id.toString() === productId &&
-          item.subcategory === subcategory &&
-          target_genders.includes(item.target_gender)
-      );
-      res.json(filteredData);
-    } else if (category && productId) {
-      // If 's' and 'id' parameters are provided, return matching item
-      const filteredData = data.filter(
-        (item) =>
-          item.category === category &&
-          item.product_id.toString() === productId
-      );
-      if (filteredData.length > 0) {
-        res.json(filteredData[0]); // Return the first matching item
-      } else {
-        res.status(404).json({ error: "Item not found" });
-      }
-    } else if (category && subcategory) {
-      // If 's' and 'sub' parameters are provided, filter the data based on both
-      const filteredData = data.filter(
-        (item) =>
-          item.category === category &&
-          item.subcategory === subcategory
-      );
-      res.json(filteredData);
-    } else if (company_name && subcategory) {
-      // If 's' and 'sub' parameters are provided, filter the data based on both
-      const filteredData = data.filter(
-        (item) =>
-          item.company_name === company_name &&
-          item.subcategory === subcategory
-      );
-      res.json(filteredData);
-    } else if (category && target_gender) {
-      // If 's' and 'g' parameters are provided, filter the data based on both
-      const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
-      const filteredData = data.filter(
-        (item) =>
-          item.category === category &&
-          target_genders.includes(item.target_gender)
-      );
-      res.json(filteredData);
-    } else if (productId && subcategory) {
-      // If 'id' and 'sub' parameters are provided, filter the data based on both
-      const filteredData = data.filter(
-        (item) =>
-          item.product_id.toString() === productId &&
-          item.subcategory === subcategory
-      );
-      res.json(filteredData);
-    } else if (subcategory && target_gender) {
-      // If 'sub' and 'g' parameters are provided, filter the data based on both
-      const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
-      const filteredData = data.filter(
-        (item) =>
-          item.subcategory === subcategory &&
-          target_genders.includes(item.target_gender)
-      );
-      res.json(filteredData);
-    } else if (subcategory) {
-      // If only 'sub' parameter is provided, filter the data based on the 's' query parameter
-      const filteredData = data.filter((item) => item.subcategory === subcategory);
-      res.json(filteredData);
-    }else if (target_gender) {
-      // If only 'sub' parameter is provided, filter the data based on the 's' query parameter
-      const filteredData = data.filter((item) => item.target_gender === target_gender);
-      res.json(filteredData);
+  //   if (category && productId && subcategory && target_gender && minPrice && maxPrice) {
+  //     // If all parameters are provided, return the matching item within the price range
+  //     const filteredData = data.filter(
+  //         (item) =>
+  //             item.category === category &&
+  //             item.product_id.toString() === productId &&
+  //             item.subcategory === subcategory &&
+  //             item.target_gender === target_gender &&
+  //             item.price >= minPrice &&
+  //             item.price <= maxPrice
+  //     );
+  //     if (filteredData.length > 0) {
+  //         res.json(filteredData[0]); // Return the first matching item
+  //     } else {
+  //         res.status(404).json({ error: "Item not found" });
+  //     }}
+  //     else if (category && productId && subcategory && minPrice && maxPrice) {
+  //       // If 's', 'id', 'sub', 'min', and 'max' parameters are provided, return matching item within price range
+  //       const filteredData = data.filter(
+  //           (item) =>
+  //               item.category === category &&
+  //               item.product_id.toString() === productId &&
+  //               item.subcategory === subcategory &&
+  //               item.price >= minPrice &&
+  //               item.price <= maxPrice
+  //       );
+  //       if (filteredData.length > 0) {
+  //           res.json(filteredData[0]); // Return the first matching item
+  //       } else {
+  //           res.status(404).json({ error: "Item not found" });
+  //       }
+  //   } else if (category && productId && target_gender && minPrice && maxPrice) {
+  //       // If 's', 'id', 'g', 'min', and 'max' parameters are provided, return matching item within price range
+  //       const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //       const filteredData = data.filter(
+  //           (item) =>
+  //               item.category === category &&
+  //               item.product_id.toString() === productId &&
+  //               target_genders.includes(item.target_gender) &&
+  //               item.price >= minPrice &&
+  //               item.price <= maxPrice
+  //       );
+  //       if (filteredData.length > 0) {
+  //           res.json(filteredData[0]); // Return the first matching item
+  //       } else {
+  //           res.status(404).json({ error: "Item not found" });
+  //       }
+  //   } else if (category && subcategory && target_gender && minPrice && maxPrice) {
+  //       // If 's', 'sub', 'g', 'min', and 'max' parameters are provided, filter the data based on all three
+  //       const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //       const filteredData = data.filter(
+  //           (item) =>
+  //               item.category === category &&
+  //               item.subcategory === subcategory &&
+  //               target_genders.includes(item.target_gender) &&
+  //               item.price >= minPrice &&
+  //               item.price <= maxPrice
+  //       );
+  //       res.json(filteredData);
+  //   } else if (subcategory && target_gender && minPrice && maxPrice) {
+  //       // If 'sub', 'g', 'min', and 'max' parameters are provided, filter the data based on all three
+  //       const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //       const filteredData = data.filter(
+  //           (item) =>
+  //               item.subcategory === subcategory &&
+  //               target_genders.includes(item.target_gender) &&
+  //               item.price >= minPrice &&
+  //               item.price <= maxPrice
+  //       );
+  //       res.json(filteredData);
+  //   } else if (target_gender && minPrice && maxPrice) {
+  //       // If 'g', 'min', and 'max' parameters are provided, filter the data based on all three
+  //       const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //       const filteredData = data.filter(
+  //           (item) =>
+  //               target_genders.includes(item.target_gender) &&
+  //               item.price >= minPrice &&
+  //               item.price <= maxPrice
+  //       );
+  //       res.json(filteredData);
+  //   } else if (minPrice && maxPrice) {
+  //       // If only 'min' and 'max' parameters are provided, filter the data based on price range
+  //       const filteredData = data.filter(
+  //           (item) =>
+  //               item.price >= minPrice &&
+  //               item.price <= maxPrice
+  //       );
+  //       res.json(filteredData);}
+
+
+
+  //       else if (subcategory && minPrice && maxPrice) {
+  //         // If 'sub', 'min', and 'max' parameters are provided, filter the data based on all three
+  //         const filteredData = data.filter(
+  //             (item) =>
+  //                 item.subcategory === subcategory &&
+  //                 item.price >= minPrice &&
+  //                 item.price <= maxPrice
+  //         );
+  //         res.json(filteredData);
+  //     } else if (category && minPrice && maxPrice) {
+  //         // If 's', 'min', and 'max' parameters are provided, filter the data based on all three
+  //         const filteredData = data.filter(
+  //             (item) =>
+  //                 item.category === category &&
+  //                 item.price >= minPrice &&
+  //                 item.price <= maxPrice
+  //         );
+  //         res.json(filteredData);
+  //     } else if (productId && minPrice && maxPrice) {
+  //         // If 'id', 'min', and 'max' parameters are provided, filter the data based on all three
+  //         const filteredData = data.filter(
+  //             (item) =>
+  //                 item.product_id.toString() === productId &&
+  //                 item.price >= minPrice &&
+  //                 item.price <= maxPrice
+  //         );
+  //         res.json(filteredData);
+  //     } else if (company_name && minPrice && maxPrice) {
+  //         // If 'cn', 'min', and 'max' parameters are provided, filter the data based on all three
+  //         const filteredData = data.filter(
+  //             (item) =>
+  //                 item.company_name === company_name &&
+  //                 item.price >= minPrice &&
+  //                 item.price <= maxPrice
+  //         );
+  //         res.json(filteredData);
+  //     } else if (minPrice && maxPrice) {
+  //         // If only 'min' and 'max' parameters are provided, filter the data based on price range
+  //         const filteredData = data.filter(
+  //             (item) =>
+  //                 item.price >= minPrice &&
+  //                 item.price <= maxPrice
+  //         );
+  //         res.json(filteredData);
+  //     }
+
+
+
+  //     else if (category && productId && subcategory && target_gender) {
+  //     // If all parameters are provided, return the matching item
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.category === category &&
+  //         item.product_id.toString() === productId &&
+  //         item.subcategory === subcategory &&
+  //         item.target_gender === target_gender
+  //     );
+  //     if (filteredData.length > 0) {
+  //       res.json(filteredData[0]); // Return the first matching item
+  //     } else {
+  //       res.status(404).json({ error: "Item not found" });
+  //     }
+  //   }
+    
+    
+
+    
+    
+  //   else if (category && productId && subcategory) {
+  //     // If 's', 'id', and 'sub' parameters are provided, return matching item
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.category === category &&
+  //         item.product_id.toString() === productId &&
+  //         item.subcategory === subcategory
+  //     );
+  //     if (filteredData.length > 0) {
+  //       res.json(filteredData[0]); // Return the first matching item
+  //     } else {
+  //       res.status(404).json({ error: "Item not found" });
+  //     }
+  //   } else if (category && productId && target_gender) {
+  //     // If 's', 'id', and 'g' parameters are provided, return matching item
+  //     const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.category === category &&
+  //         item.product_id.toString() === productId &&
+  //         target_genders.includes(item.target_gender)
+  //     );
+  //     if (filteredData.length > 0) {
+  //       res.json(filteredData[0]); // Return the first matching item
+  //     } else {
+  //       res.status(404).json({ error: "Item not found" });
+  //     }
+  //   } else if (category && subcategory && target_gender) {
+  //     // If 's', 'sub', and 'g' parameters are provided, filter the data based on all three
+  //     const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.category === category &&
+  //         item.subcategory === subcategory &&
+  //         target_genders.includes(item.target_gender)
+  //     );
+  //     res.json(filteredData);
+  //   } else if (productId && subcategory && target_gender) {
+  //     // If 'id', 'sub', and 'g' parameters are provided, filter the data based on all three
+  //     const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.product_id.toString() === productId &&
+  //         item.subcategory === subcategory &&
+  //         target_genders.includes(item.target_gender)
+  //     );
+  //     res.json(filteredData);
+  //   } else if (category && productId) {
+  //     // If 's' and 'id' parameters are provided, return matching item
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.category === category &&
+  //         item.product_id.toString() === productId
+  //     );
+  //     if (filteredData.length > 0) {
+  //       res.json(filteredData[0]); // Return the first matching item
+  //     } else {
+  //       res.status(404).json({ error: "Item not found" });
+  //     }
+  //   } else if (category && subcategory) {
+  //     // If 's' and 'sub' parameters are provided, filter the data based on both
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.category === category &&
+  //         item.subcategory === subcategory
+  //     );
+  //     res.json(filteredData);
+  //   } else if (company_name && subcategory) {
+  //     // If 's' and 'sub' parameters are provided, filter the data based on both
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.company_name === company_name &&
+  //         item.subcategory === subcategory
+  //     );
+  //     res.json(filteredData);
+  //   } else if (category && target_gender) {
+  //     // If 's' and 'g' parameters are provided, filter the data based on both
+  //     const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.category === category &&
+  //         target_genders.includes(item.target_gender)
+  //     );
+  //     res.json(filteredData);
+  //   } else if (productId && subcategory) {
+  //     // If 'id' and 'sub' parameters are provided, filter the data based on both
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.product_id.toString() === productId &&
+  //         item.subcategory === subcategory
+  //     );
+  //     res.json(filteredData);
+  //   } else if (subcategory && target_gender) {
+  //     // If 'sub' and 'g' parameters are provided, filter the data based on both
+  //     const target_genders = Array.isArray(target_gender) ? target_gender : [target_gender];
+  //     const filteredData = data.filter(
+  //       (item) =>
+  //         item.subcategory === subcategory &&
+  //         target_genders.includes(item.target_gender)
+  //     );
+  //     res.json(filteredData);
+  //   } else if (subcategory) {
+  //     // If only 'sub' parameter is provided, filter the data based on the 's' query parameter
+  //     const filteredData = data.filter((item) => item.subcategory === subcategory);
+  //     res.json(filteredData);
+  //   }else if (target_gender) {
+  //     // If only 'sub' parameter is provided, filter the data based on the 's' query parameter
+  //     const filteredData = data.filter((item) => item.target_gender === target_gender);
+  //     res.json(filteredData);
       
-      }else if (company_name) {
-        // If only 'sub' parameter is provided, filter the data based on the 's' query parameter
-        const filteredData = data.filter((item) => item.company_name === company_name);
-        res.json(filteredData);
-    } else if (category) {
-      // If only 's' parameter is provided, filter the data based on the 's' query parameter
-      const filteredData = data.filter((item) => item.category === category);
-      res.json(filteredData);
-    } else if (productId) {
-      // If only 'id' parameter is provided, filter the data based on the 'id' query parameter
-      const filteredData = data.filter((item) => item.product_id.toString() === productId);
-      if (filteredData.length > 0) {
-        res.json(filteredData[0]); // Return the first matching item
-      } else {
-        res.status(404).json({ error: "Item not found" });
-      }
+  //     }else if (company_name) {
+  //       // If only 'sub' parameter is provided, filter the data based on the 's' query parameter
+  //       const filteredData = data.filter((item) => item.company_name === company_name);
+  //       res.json(filteredData);
+  //   } else if (category) {
+  //     // If only 's' parameter is provided, filter the data based on the 's' query parameter
+  //     const filteredData = data.filter((item) => item.category === category);
+  //     res.json(filteredData);
+  //   } else if (productId) {
+  //     // If only 'id' parameter is provided, filter the data based on the 'id' query parameter
+  //     const filteredData = data.filter((item) => item.product_id.toString() === productId);
+  //     if (filteredData.length > 0) {
+  //       res.json(filteredData[0]); // Return the first matching item
+  //     } else {
+  //       res.status(404).json({ error: "Item not found" });
+  //     }
+  //   } else {
+  //     // If neither 's' nor 'id' parameters are provided, return all data
+  //     res.json(data);
+  //   }
+  // });
+  // app.listen(5000, () => {
+  //   console.log('Server started on http://localhost:5000');
+  // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  app.get('/', (req, res) => {
+    const { s: category, id: productId, sub: subcategory, g: target_gender, cn: company_name, min: minPrice, max: maxPrice } = req.query;
+
+    const filterParams = {
+        category,
+        productId,
+        subcategory,
+        target_gender,
+        company_name,
+        minPrice: minPrice ? parseFloat(minPrice) : 0,
+        maxPrice: maxPrice ? parseFloat(maxPrice) : Number.MAX_VALUE
+    };
+
+    const filteredData = data.filter(item => meetsFilterCriteria(item, filterParams));
+    // console.log("Target Gender:", item.target_gender)
+
+    if (filteredData.length > 0) {
+        res.json(filteredData); // Return all matching items
     } else {
-      // If neither 's' nor 'id' parameters are provided, return all data
-      res.json(data);
+        res.status(404).json({ error: "Items not found" });
     }
-  });
-  app.listen(5000, () => {
+});
+
+function meetsFilterCriteria(item, { category, productId, subcategory, target_gender, company_name, minPrice, maxPrice }) {
+  
+  return (
+        (!category || item.category === category) &&
+        (!productId || item.product_id.toString() === productId) &&
+        (!subcategory || item.subcategory === subcategory) &&
+        (!target_gender || (Array.isArray(target_gender) ? target_gender.includes(item.target_gender) : item.target_gender === target_gender)) &&
+        (!company_name || item.company_name === company_name) &&
+        (item.price >= minPrice && item.price <= maxPrice)
+    );
+}
+
+app.listen(5000, () => {
     console.log('Server started on http://localhost:5000');
-  });
+});
