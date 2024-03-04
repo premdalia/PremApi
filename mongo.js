@@ -10,7 +10,7 @@
   app.use(cors());
   require('dotenv').config();
 
-  // const mongourl =
+  // const  =
   
   //   process.env.MONGODB_URI;
 
