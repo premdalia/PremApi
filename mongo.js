@@ -11,7 +11,7 @@
   require('dotenv').config();
 
   // const mongourl =
-  //   // 'mongodb+srv://dranzerop07:Dranzerop07@cluster0.ho114lo.mongodb.net/';
+  
   //   process.env.MONGODB_URI;
 
 
